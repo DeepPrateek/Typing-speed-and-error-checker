@@ -1,0 +1,40 @@
+import random as r
+from time import time
+
+def mistake(partest, usertest):
+    error = 0
+    for i in range(len(partest)):
+        try:
+            if partest[i] != usertest[i]:
+                error += 1
+        except:
+            error += 1
+    return error
+
+def speed(speed_s, speed_e, user_t):
+    time_delay = speed_e - speed_s
+    time_r = round(time_delay, 2)
+    speed = len(user_t) / time_r
+    return round(speed), time_r 
+
+test = [
+    "Lectoure was a prehistoric oppidum, capital of Lactorates. Barbarian invasions forced residents to raise the walls and make Lectoure a stronghold for centuries.",
+    "The town became the capital city of the Earldom of Armagnac in 1325, ruled by a powerful family descended from the ancient Dukes of Gascony, who held court at Lectoure.",
+    "In 1473 Cardinal Jean de Jouffroy besieged the town on behalf of Louis XI, and after its fall put the whole population to the sword."
+]
+
+test1 = r.choice(test)
+print("***** Typing Speed *****")
+print(test1)
+print('\n')
+
+time_1 = time()
+user = input("Enter above line and check your speed and error: ")
+time_2 = time()
+
+user_speed, time_taken = speed(time_1, time_2, user)
+user_mistakes = mistake(test1, user)
+
+print("Speed:", user_speed, "W/S")
+print("Time taken:", time_taken, "seconds")
+print("Mistake:", user_mistakes)
